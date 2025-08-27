@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anuwat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- ✅ วันที่ + เวลา -->
+    <div class="date-time">
+      <p class="date" id="date"></p>
+      <p class="time" id="time"></p>
+    </div>
+
+    <h2 class="title">รายการ</h2>
+
+    <!-- ✅ ปฏิทิน -->
+    <div class="card large">
+      <p>ปฏิทิน</p>
+      <div id="calendar"></div>
+      <div class="controls">
+        <button onclick="prevMonth()">ก่อนหน้า</button>
+        <button onclick="nextMonth()">ถัดไป</button>
+      </div>
+    </div>
+
+    <!-- ✅ กล่องเพิ่ม/ลบโน้ต -->
+    <div id="noteBox" class="card">
+      <p>จัดการโน้ต</p>
+      <p id="selectedDate">ยังไม่ได้เลือกวัน</p>
+      <button onclick="addNote('holiday')" class="holidayBtn">เพิ่มวันหยุด</button>
+      <button onclick="addNote('ot')" class="otBtn">เพิ่ม OT</button>
+      <button onclick="removeNote()" class="removeBtn">ลบโน้ต</button>
+    </div>
+
+    <!-- ✅ ปุ่มลิงก์ไปหน้าอื่น -->
+    <div class="row">
+      <a href="ot.html" class="card small link-btn ot-btn">
+        <p>คำนวณ OT</p>
+      </a>
+      <a href="pocket.html" class="card small link-btn pocket-btn">
+        <p>คำนวณค่าใช้จ่าย</p>
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

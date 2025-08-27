@@ -1,0 +1,211 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  padding: 20px;
+}
+
+/* ✅ วันที่ + เวลา */
+.date-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  color: #aaa;
+  margin: 0;
+  font-size: 16px;
+  text-align: left;
+}
+
+.time {
+  color: #aaa;
+  margin: 0;
+  font-size: 20px;   /* เวลาใหญ่กว่าวันที่ */
+  font-weight: bold; /* เวลาเป็นตัวหนา */
+  text-align: right;
+}
+
+.title {
+  font-size: 24px;
+  margin: 5px 0 20px 0;
+}
+
+.card {
+  background: #1c1c1e;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
+}
+
+.card p {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 5px;
+}
+
+.large {
+  min-height: 380px;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+.small {
+  flex: 1;
+  height: 120px;
+}
+
+/* ปฏิทิน */
+#calendar {
+  margin-top: 15px;
+}
+
+.calendar-header {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+}
+
+.day-name {
+  font-weight: bold;
+  color: #f55;
+}
+
+.day {
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.day:hover {
+  background: #333;
+}
+
+/* วงกลมสี */
+.today {
+  background: red;
+  color: white;
+  font-weight: bold;
+}
+
+.holiday {
+  background: green;
+  color: white;
+  font-weight: bold;
+}
+
+.ot {
+  background: blue;
+  color: white;
+  font-weight: bold;
+}
+
+/* วงกลม 2 สี */
+.holiday-ot {
+  background: linear-gradient(to right, green 50%, blue 50%);
+  color: white;
+  font-weight: bold;
+}
+
+/* วงกลม 3 สี */
+.today-holiday-ot {
+  background: conic-gradient(red 0deg 120deg, green 120deg 240deg, blue 240deg 360deg);
+  color: white;
+  font-weight: bold;
+}
+
+.controls {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.controls button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  background: #444;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: #666;
+}
+
+#noteBox button {
+  display: inline-block;
+  margin: 5px 5px 0 0;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.holidayBtn {
+  background: green;
+  color: white;
+}
+
+.otBtn {
+  background: blue;
+  color: white;
+}
+
+.removeBtn {
+  background: red;
+  color: white;
+}
+
+/* ✅ ปุ่มลิงก์ */
+.link-btn {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.link-btn p {
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+/* ปุ่ม OT */
+.ot-btn {
+  background: #2e3b55; /* โทนน้ำเงินเข้ม */
+}
+.ot-btn:hover {
+  background: #3c4f72;
+  transform: scale(1.05);
+}
+
+/* ปุ่มค่าใช้จ่าย */
+.pocket-btn {
+  background: #2e5538; /* โทนเขียวเข้ม */
+}
+.pocket-btn:hover {
+  background: #3c724f;
+  transform: scale(1.05);
+}

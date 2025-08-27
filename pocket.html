@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pocket - คำนวณค่าใช้จ่าย</title>
+  <link rel="stylesheet" href="pocketstyle.css">
+</head>
+<body>
+  <div class="container">
+    
+    <!-- ✅ แถบแสดงผล -->
+    <div class="summary-bar">
+      <p id="balance">เงินคงเหลือ: 0 บาท</p>
+      <p id="totalExpense">ค่าใช้จ่ายรวม: 0 บาท</p>
+    </div>
+
+    <h2 class="title">คำนวณค่าใช้จ่าย</h2>
+    <p class="note">💡 หมายเหตุ: เงินเดือนออกวันที่ 25 ของทุกเดือน</p>
+
+    <div class="grid">
+      <!-- รายได้ -->
+      <div class="card">
+        <h3>รายได้ 💵</h3>
+        <label>เงินเดือน</label>
+        <input type="number" id="salary" oninput="calcAll()">
+
+        <label>OT</label>
+        <input type="number" id="ot" oninput="calcAll()">
+
+        <label>Incentive</label>
+        <input type="number" id="incentive" oninput="calcAll()">
+
+        <p id="incomeResult">รวมรายได้: 0 บาท</p>
+        <button id="btn-income" onclick="saveData('income')">บันทึก</button>
+      </div>
+
+      <!-- ค่าไฟฟ้า -->
+      <div class="card">
+        <h3>ค่าไฟฟ้า ⚡</h3>
+        <label>หน่วยต้นเดือน</label>
+        <input type="number" id="electricStart" oninput="calcAll()">
+        <label>หน่วยปัจจุบัน</label>
+        <input type="number" id="electricNow" oninput="calcAll()">
+        <label>ราคาต่อหน่วย (บาท)</label>
+        <input type="number" id="electricRate" value="7" oninput="calcAll()">
+        <p id="electricResult">รวมค่าไฟฟ้า: 0 บาท</p>
+        <button id="btn-electric" onclick="saveData('electric')">บันทึก</button>
+      </div>
+
+      <!-- ค่าอาหาร -->
+      <div class="card">
+        <h3>ค่าอาหาร 🍚</h3>
+        <p class="note-food" id="foodNote">0 บาท</p>
+        <input type="number" id="foodToday" placeholder="กรอกค่าอาหารที่ใช้จริงวันนี้">
+        <button onclick="saveFood()">บันทึก</button>
+      </div>
+
+      <!-- ค่าน้ำมัน -->
+      <div class="card">
+        <h3>ค่าน้ำมัน ⛽</h3>
+        <p class="note-fuel" id="fuelNote">0 บาท</p>
+        <input type="number" id="fuelToday" placeholder="กรอกค่าน้ำมันที่ใช้จริงวันนี้">
+        <button onclick="saveFuel()">บันทึก</button>
+      </div>
+
+      <!-- ค่าน้ำ -->
+      <div class="card">
+        <h3>ค่าน้ำ 🚿</h3>
+        <input type="number" id="water" oninput="calcAll()">
+        <button id="btn-water" onclick="saveData('water')">บันทึก</button>
+      </div>
+
+      <!-- ค่าหอพัก -->
+      <div class="card">
+        <h3>ค่าหอพัก 🏠</h3>
+        <input type="number" id="rent" oninput="calcAll()">
+        <button id="btn-rent" onclick="saveData('rent')">บันทึก</button>
+      </div>
+    </div>
+
+    <!-- ปุ่มรีเซ็ต -->
+    <div class="reset-container">
+      <button class="reset-btn" onclick="resetPocket()">รีเซ็ตค่า</button>
+    </div>
+
+    <a href="index.html" class="back-btn">← กลับหน้าแรก</a>
+  </div>
+
+  <script src="pocketscript.js"></script>
+</body>
+</html>
