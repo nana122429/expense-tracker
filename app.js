@@ -1,39 +1,60 @@
 const API_URL = "/.netlify/functions/db";
 
-// โหลดข้อมูลตอนเปิดเว็บ
+// โหลดข้อมูลจาก DB มาแสดงในตาราง
 async function loadExpenses() {
-  const res = await fetch(API_URL);
-  const data = await res.json();
+  try {
+    const res = await fetch(API_URL);
+    const data = await res.json();
 
-  let table = document.getElementById("expenseTable");
-  table.innerHTML = "<tr><th>รายการ</th><th>หมวด</th><th>จำนวนเงิน</th></tr>";
-  let total = 0;
+    let table = document.getElementById("expenseTable");
+    table.innerHTML = "<tr><th>รายการ</th><th>หมวด</th><th>จำนวนเงิน</th></tr>";
+    let total = 0;
 
-  data.forEach(e => {
-    table.innerHTML += `<tr><td>${e.description}</td><td>${e.category}</td><td>${e.amount}</td></tr>`;
-    total += Number(e.amount);
-  });
+    data.forEach(e => {
+      table.innerHTML += `
+        <tr>
+          <td>${e.description}</td>
+          <td>${e.category}</td>
+          <td>${e.amount}</td>
+        </tr>`;
+      total += Number(e.amount);
+    });
 
-  document.getElementById("total").innerText = total;
+    document.getElementById("total").innerText = total;
+
+  } catch (err) {
+    console.error("โหลดข้อมูลล้มเหลว:", err);
+  }
 }
 
-// บันทึกข้อมูลใหม่
+// กดปุ่ม "บันทึก" เพื่อเพิ่มค่าใช้จ่ายใหม่
 document.getElementById("saveBtn").addEventListener("click", async () => {
-  const desc = document.getElementById("desc").value;
-  const amount = document.getElementById("amount").value;
+  const desc = document.getElementById("desc").value.trim();
+  const amount = document.getElementById("amount").value.trim();
   const type = document.getElementById("type").value;
 
-  if (!desc || !amount) return alert("กรอกข้อมูลให้ครบ");
+  if (!desc || !amount) {
+    alert("กรอกข้อมูลให้ครบก่อนบันทึก");
+    return;
+  }
 
-  await fetch(API_URL, {
-    method: "POST",
-    body: JSON.stringify({ description: desc, amount, category: type })
-  });
+  try {
+    await fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify({ description: desc, amount, category: type })
+    });
 
-  document.getElementById("desc").value = "";
-  document.getElementById("amount").value = "";
+    // ล้าง input
+    document.getElementById("desc").value = "";
+    document.getElementById("amount").value = "";
 
-  loadExpenses();
+    // โหลดใหม่หลังบันทึกเสร็จ
+    loadExpenses();
+
+  } catch (err) {
+    console.error("บันทึกข้อมูลล้มเหลว:", err);
+  }
 });
 
+// โหลดข้อมูลทันทีเมื่อเปิดเว็บ
 loadExpenses();
