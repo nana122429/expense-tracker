@@ -1,1 +1,27 @@
-html
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Expense Tracker</title>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <h1>📒 บันทึกค่าใช้จ่าย</h1>
+  
+  <input type="text" id="desc" placeholder="รายการ เช่น ค่าไฟ">
+  <input type="number" id="amount" placeholder="จำนวนเงิน (บาท)">
+  <select id="type">
+    <option value="อาหาร">🍜 อาหาร</option>
+    <option value="ค่าเดินทาง">🚗 ค่าเดินทาง</option>
+    <option value="บิล">💡 บิล</option>
+    <option value="อื่นๆ">📦 อื่นๆ</option>
+  </select>
+  <button id="saveBtn">บันทึก</button>
+
+  <h2>สรุปรายการ</h2>
+  <table id="expenseTable">
+    <tr><th>รายการ</th><th>หมวด</th><th>จำนวนเงิน</th></tr>
+  </table>
+  <h3>รวมทั้งหมด: <span id="total">0</span> บาท</h3>
+</body>
+</html>
