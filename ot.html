@@ -1,14 +1,53 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>คำนวณ OT</title>
+  <link rel="stylesheet" href="otstyle.css">
 </head>
-
 <body>
-  
-</body>
+  <div class="container">
+    <h2 class="title">คำนวณ OT</h2>
+    <p class="note">💡 สูตร: (เงินเดือน ÷ 30 ÷ 8) × ชั่วโมงทำ OT × อัตรา</p>
 
+    <div class="card">
+      <label>เงินเดือน (บาท)</label>
+      <input type="number" id="salary" placeholder="เช่น 12500">
+
+      <label>วันที่ทำ OT</label>
+      <input type="date" id="otDate">
+
+      <label>เวลาเข้า</label>
+      <input type="time" id="startTime">
+
+      <label>เวลาออก</label>
+      <input type="time" id="endTime">
+
+      <label>อัตรา OT</label>
+      <select id="otRate">
+        <option value="1">x1 (ค่าปกติ)</option>
+        <option value="1.5">x1.5 (วันทำงาน)</option>
+        <option value="2">x2 (วันหยุด)</option>
+        <option value="3">x3 (วันนักขัตฤกษ์)</option>
+      </select>
+
+      <label>หมายเหตุ</label>
+      <input type="text" id="note" placeholder="เช่น OT กะดึก">
+
+      <button onclick="calcOT()">บันทึก OT</button>
+      <p id="otResult">รวมค่า OT: 0 บาท</p>
+    </div>
+
+    <div class="card">
+      <h3>📌 รายการ OT ที่บันทึกไว้</h3>
+      <ul id="otList"></ul>
+    </div>
+
+    <a href="index.html" class="back-btn">← กลับหน้าแรก</a>
+  </div>
+
+  <script src="storage.js"></script>
+  <script src="otscript.js"></script>
+</body>
 </html>
